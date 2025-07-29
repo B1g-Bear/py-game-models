@@ -2,7 +2,7 @@ import json
 from db.models import Race, Skill, Player, Guild
 
 
-def main():
+def main() -> None:
     with open("players.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -32,7 +32,10 @@ def main():
         for skill_data in race_data.get("skills", []):
             skill, _ = Skill.objects.get_or_create(
                 name=skill_data["name"],
-                defaults={"bonus": skill_data.get("bonus"), "race": race},
+                defaults={
+                    "bonus": skill_data.get("bonus"),
+                    "race": race,
+                },
             )
             player.skills.add(skill)
 
