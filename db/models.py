@@ -2,16 +2,16 @@ from django.db import models
 
 
 class Race(models.Model):
-    name: str = models.CharField(max_length=50, unique=True)
-    description: str | None = models.TextField(null=True, blank=True)
+    name = models.CharField(max_length=50, unique=True)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name
 
 
 class Skill(models.Model):
-    name: str = models.CharField(max_length=50, unique=True)
-    bonus: str | None = models.TextField(null=True, blank=True)
+    name = models.CharField(max_length=50, unique=True)
+    bonus = models.TextField(null=True, blank=True)
     race = models.ForeignKey(
         Race,
         null=True,
@@ -25,17 +25,17 @@ class Skill(models.Model):
 
 
 class Guild(models.Model):
-    name: str = models.CharField(max_length=50, unique=True)
-    description: str | None = models.TextField(null=True, blank=True)
+    name = models.CharField(max_length=50, unique=True)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name
 
 
 class Player(models.Model):
-    nickname: str = models.CharField(max_length=50, unique=True)
-    email: str = models.EmailField(unique=True)
-    bio: str | None = models.TextField(null=True, blank=True)
+    nickname = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(unique=True)
+    bio = models.TextField(null=True, blank=True)
     race = models.ForeignKey(
         Race,
         on_delete=models.PROTECT,
