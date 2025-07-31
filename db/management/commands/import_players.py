@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 from db.models import Player, Race, Skill, Guild
 
+
 def import_players(file_path: Path) -> None:
     with file_path.open(encoding="utf-8") as f:
         players_data = json.load(f)
